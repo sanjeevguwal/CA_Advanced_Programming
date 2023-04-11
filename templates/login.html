@@ -1,3 +1,83 @@
+<!DOCTYPE html>
 <html>
-    <title> ABjkfvbcsad</title>
+<head>
+	<title>Travel Management System - Login</title>
+	<style>
+		
+
+body {
+    background-color: #f2f2f2;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+    padding: 50px;
+    width: 400px;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+	</style>
+
+	<!-- <link rel="style" href="/static/css/login.css"> -->
+</head>
+<body>
+	<div class="container">
+		<h2>Login</h2>
+		<form action="" method="post">
+			<input type="text" name="username" placeholder="Username" required>
+			<input type="password" name="password" placeholder="Password" required>
+			<input type="submit" value="Login">
+		</form>
+        <br>
+
+        <label>If user does not exist</label>
+        <a href="{{url_for('register')}}">Register here</a>
+		<div class="error">
+            
+			<!-- Display error message here if login fails -->
+		</div>
+	</div>
+</body>
 </html>

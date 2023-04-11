@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Packages</title>
+  <style>
+    /* Style for travel package page */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+    }
+
+    .header a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 0 10px;
+    }
+
+    .packages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+    }
+
+    .package {
+      box-shadow: 0px 0px 10px #ccc;
+      margin: 10px;
+      width: 300px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .package:hover {
+      box-shadow: 0px 0px 20px #ccc;
+    }
+
+    .package img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .package h2 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .package p {
+      margin: 5px 0;
+    }
+
+    .package button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .package button:hover {
+      background-color: #555;
+      color: #333;
+    }
+
+
+    .header {
+		background-color: #333;
+		color: #fff;
+		display: flex;
+		justify-content: space-around;
+		padding: 20px;
+	  }
+
+
+      .header h1 {
+		margin: 0;
+	  }
+    
+      .header a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 20px;
+		padding: 0 10px;
+	  }
+
+
+
+      .container2 {
+		padding: 16px;
+		margin: 0 auto;
+		max-width: 600px;
+		border-radius: 5px;
+		background-color: #f2f2f2;
+	}
+
+    .container2 h1 {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+	
+    .container2 label {
+		font-size: 16px;
+		font-weight: bold;
+		display: block;
+		margin-bottom: 10px;
+	}
+
+
+    .container2 input[type=text],
+	.container2 input[type=email],
+	.container2 input[type=number],
+	.container2 select,
+	.container2 textarea {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+
+
+
+
+    .container2 input[type=submit] {
+		background-color: #333;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-top: 20px;
+		width: 100%;
+	}
+
+
+
+    .container2 input[type=submit]:hover {
+		background-color: #555;
+	}
+
+
+    .container2 textarea {
+		height: 200px;
+		resize: none;
+	}
+	
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Travel Packages</h1>
+    <a href="#">Home</a>
+    <a href="{{url_for('package')}}">Packages</a>
+    <a href="{{url_for('booking')}}">Booking</a>
+    <a href="{{url_for('feedback')}}">Feedback</a>
+    <a href="{{url_for('logout')}}">Logout</a>
+  </div>
+
+	<form action="" method="post">
+		<div class="container2">
+			<h1>Travel Booking Form</h1>
+
+
+			<label for="destination"><b>Destination</b></label>
+			<select name="destination" required>
+				<option value="">Select Destination</option>
+				<option value="dublin">Dublin</option>
+				<option value="cork">cork</option>
+				<option value="belfast">Belfast</option>
+                <option value="limerick">Limerick</option>
+                <option value="galway">Galway</option>
+                <option value="kilkenny">Kilkenny</option>
+			</select>
+            <br>
+            <br>
+
+
+            <label for="date_from">From:</label>
+            <input type="date" id="datefrom" name="datefrom" required><br>
+            <br>
+            <label for="dateto">To:</label>
+            <input type="date" id="dateto" name="dateto" required><br>
+            <br>
+            <label   label for="num_people">Number of people:</label>
+            <input type="number" id="num_people" name="num_people" min="1" max="10" required><br>
+            <br>
+            <div>
+            <label for="price">Package Prices</label>  
+            <select name="price" required>
+            <option value="">Select Package</option>
+            <option id="1"  value="150">150 Euro</option>
+            <option id="2" value="120">120 Euro</option>
+            <option id="3" value="110">110 Euro</option>
+            </select>
+            </div>
+
+            <button onclick="calculatePrice()">Calculate Price</button>
+			
+            <br>
+            <br>
+
+			<input type="submit" value="Book" onclick="calculatePrice()">
+		</div>
+	</form>
+
+
+  <script>
+    function calculatePrice() {
+
+      const destination = document.getElementById("destination").value;
+      const number = document.getElementById("num_people").value;
+      const package_price = document.getElementById("1").value
+      const price =  number * package_price;
+      
+      // update the HTML element with the result
+      const resultElement = document.getElementById("result");
+      resultElement.innerHTML = `The price for ${number} people  is ${price}`;
+    }
+  </script>
+
+
+</body>
+</html>
