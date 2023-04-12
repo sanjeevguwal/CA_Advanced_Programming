@@ -18,9 +18,26 @@ app.secret_key = "dockerboojumsweetdish"
 
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET','POST'])
 def register():
+    if request.method == 'POST':
+        #fetch data
+        userDetails = request.form
+        username = userDetails['username']
+        password = userDetails['password']
+        email = userDetails['email']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO users(username,password,email) VALUES(%s,%s,%s)", (username,password,email))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('login'))
     return render_template('register.html')
+    
+    
+#################### routing login form
+# @app.route('/login')
+# def login():
+#     return render_template('login.html')
 
 ################## login form routing and checking the session
 @app.route('/', methods = ['GET','POST'])
