@@ -5,9 +5,9 @@
     function calculatePrice(num_people) {
 
       const number = document.getElementById("num_people").value;
-      const package_price = document.getElementById("1").value
+      const package_price = document.getElementById("select").value
       const price =  number * package_price;
-      document.getElementById("price").innerHTML = "Total Price: $" + price;
+      document.getElementById("totalprice").innerHTML = "Total Price: €" + price;
       // update the HTML element with the result
       //const resultElement = document.getElementById("result");
       return price;
@@ -227,8 +227,9 @@
             <option value="110">110 Euro</option>
           </select>
       </div>
-      <button onclick="calculatePrice()">Calculate Price</button>
-      <input type="submit" value="Book" onclick="calculatePrice()">
+      <button onclick="calculatePrice(num_people)">Calculate Price</button>
+      <input type="submit" value="Book" onclick="calculatePrice(num_people)">
+      <p id="totalprice"></p>
   </div>
 </form>
   </body>
