@@ -14,7 +14,7 @@ app.config['MYSQL_DB'] = 'flaskapp'
 mysql = MySQL(app)
 
 
-app.secret_key = "dockerboojumsweetdish"
+app.secret_key = "advancedprogramming"
 
 
 
