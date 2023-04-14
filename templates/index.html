@@ -1,0 +1,619 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Traveler template</title>
+      <meta property="og:title" content="Traveler template" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta charset="utf-8" />
+      <meta property="twitter:card" content="summary_large_image" />
+
+      <style data-tag="reset-style-sheet" >
+        html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+      </style>
+      <style data-tag="default-style-sheet">
+        html {
+          font-family: Karla;
+          font-size: 16px;
+        }
+
+        body {
+          font-weight: 400;
+          font-style:normal;
+          text-decoration: none;
+          text-transform: none;
+          letter-spacing: normal;
+          line-height: 1.15;
+          color: var(--dl-color-gray-black);
+          background-color: var(--dl-color-gray-white);
+
+        }
+        
+      </style>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        data-tag="font"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+        data-tag="font"
+      />
+      <style>
+.offer-offer {
+  gap: var(--dl-space-space-oneandhalfunits);
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+.offer-image {
+  object-fit: cover;
+}
+.offer-content {
+  gap: var(--dl-space-space-oneandhalfunits);
+  display: flex;
+  flex-direction: column;
+}
+.offer-details {
+  gap: var(--dl-space-space-unit);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.offer-text {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+.offer-text1 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+.offer-text2 {
+  max-width: 400px;
+  line-height: 24px;
+}
+.offer-root-class-name {
+  top: 0px;
+  flex: 1;
+  left: 0px;
+  position: 0px;
+  align-self: stretch;
+}
+@media(max-width: 991px) {
+  .offer-image {
+    width: 100%;
+  }
+}
+
+.home-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  align-items: center;
+  flex-direction: column;
+}
+.home-hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.home-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-left: var(--dl-space-space-fiveunits);
+  padding-right: var(--dl-space-space-fiveunits);
+  flex-direction: column;
+}
+.home-video {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  bottom: 0px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-video1 {
+  height: 100%;
+}
+.home-tint {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  bottom: 0px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.home-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.home-center {
+  gap: var(--dl-space-space-threeunits);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 100;
+  max-width: 900px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.home-login {
+  margin-right: var(--dl-space-space-twounits);
+}
+.home-heading {
+  gap: var(--dl-space-space-oneandhalfunits);
+  width: 100%;
+  display: flex;
+  max-width: 900px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-header {
+  color: rgb(255, 255, 255);
+  font-size: 90px;
+  font-style: normal;
+  text-align: center;
+  font-family: Cormorant Infant;
+  font-weight: 700;
+  line-height: 90px;
+}
+.home-caption {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  max-width: 600px;
+  box-shadow: rgb(212, 212, 212) 5px 5px 10px 0px;
+  text-align: center;
+  font-family: Karla;
+  line-height: 27px;
+}
+.home-quick-view {
+  gap: var(--dl-space-space-fourunits);
+  width: 100%;
+  display: flex;
+  max-width: 1440px;
+  align-items: center;
+  padding-top: 120px;
+  padding-left: var(--dl-space-space-fiveunits);
+  padding-right: var(--dl-space-space-fiveunits);
+  flex-direction: column;
+  padding-bottom: 120px;
+}
+.home-offers {
+  width: 100%;
+  display: grid;
+  grid-gap: var(--dl-space-space-threeunits);
+  align-items: center;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.home-offer-container {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+}
+.home-offer-container1 {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+}
+.home-offer-container2 {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+}
+.home-offer-container3 {
+  width: 100%;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+}
+.home-offer-container4 {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+}
+.home-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #352B2A;
+}
+.home-content1 {
+  gap: 120px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  max-width: 1440px;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-fourunits);
+  padding-left: var(--dl-space-space-fiveunits);
+  padding-right: var(--dl-space-space-fiveunits);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-threeunits);
+}
+.home-main1 {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.home-branding {
+  gap: var(--dl-space-space-threeunits);
+  display: flex;
+  max-width: 400px;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-heading1 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  border: 2px dashed rgba(120, 120, 120, 0.4);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-links {
+  gap: 100px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.home-items {
+  gap: var(--dl-space-space-unit);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-link {
+  color: rgb(255, 255, 255);
+}
+.home-link1 {
+  color: rgb(255, 255, 255);
+}
+.home-link2 {
+  color: rgb(255, 255, 255);
+}
+.home-items1 {
+  gap: var(--dl-space-space-unit);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-link3 {
+  color: rgb(255, 255, 255);
+}
+.home-link4 {
+  color: rgb(255, 255, 255);
+}
+.home-link5 {
+  color: rgb(255, 255, 255);
+}
+.home-link6 {
+  color: rgb(255, 255, 255);
+}
+@media(max-width: 991px) {
+  .home-quick-view {
+    padding-top: var(--dl-space-space-fourunits);
+    padding-bottom: var(--dl-space-space-fourunits);
+  }
+  .home-offers {
+    grid-template-columns: auto auto;
+  }
+  .home-content1 {
+    gap: var(--dl-space-space-threeunits);
+  }
+  .home-main1 {
+    gap: var(--dl-space-space-threeunits);
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .home-branding {
+    max-width: 80%;
+  }
+  .home-heading1 {
+    gap: var(--dl-space-space-unit);
+  }
+  .home-links {
+    gap: var(--dl-space-space-threeunits);
+    flex-direction: column;
+  }
+}
+@media(max-width: 767px) {
+  .home-main {
+    padding-left: var(--dl-space-space-oneandhalfunits);
+    padding-right: var(--dl-space-space-oneandhalfunits);
+  }
+  .home-center {
+    padding-bottom: 100px;
+  }
+  .home-heading {
+    gap: var(--dl-space-space-halfunit);
+  }
+  .home-header {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .home-caption {
+    font-size: 16px;
+    max-width: 80%;
+    line-height: 24px;
+  }
+  .home-quick-view {
+    padding-left: var(--dl-space-space-oneandhalfunits);
+    padding-right: var(--dl-space-space-oneandhalfunits);
+  }
+  .home-offers {
+    grid-template-columns: auto;
+  }
+  .home-content1 {
+    padding-left: var(--dl-space-space-oneandhalfunits);
+    padding-right: var(--dl-space-space-oneandhalfunits);
+  }
+  .home-branding {
+    max-width: 70%;
+  }
+}
+
+
+
+      </style>
+      <!--This is the head section-->
+      <!-- <style> ... </style> -->
+      
+    </head>
+    <body>
+      <div>
+        <link href="/static/css/index.css" rel="style" />
+
+
+        <div class="home-container">
+          <section class="home-hero">
+            <div class="home-main">
+              <div class="home-video">
+                <video
+                  src=""
+                  poster="/img/background_image.jpeg"
+                  class="home-video1">
+                </video>
+                <div class="home-tint"></div>
+              </div>
+              <div class="home-content">
+                <div class="home-center">
+                  <div class="home-container1">
+                    <button class="home-login button" href="/templates/login.html">Login</button>
+                    <button class="button" href="/templates/register.html">Register</button>
+                  </div>
+                  <div class="home-heading">
+                    <h1 class="home-header">
+                      <span>Tours and Travels</span>
+                      <br />
+                    </h1>
+                    <p class="home-caption">
+                      Find a travel destination that suits your needs
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="tours" class="home-quick-view">
+            <div class="home-offers">
+              <a href="index.html">
+                <div class="home-offer-container">
+                  <div class="offer-offer">
+                    <img
+                      alt="image"
+                      src="/img/dublin.jpg"
+                      class="offer-image"
+                    />
+                    <div class="offer-content">
+                      <div class="offer-details">
+                        <span class="offer-text"><span>Dublin</span></span>
+                        <span class="offer-text1">
+                          
+                        </span>
+                      </div>
+                      <span class="offer-text2">
+                        <span>
+                          Dublin is the capital city of Ireland and one of the
+                          most popular destinations in Europe. The city is known
+                          for its rich history, lively culture, and friendly
+                          locals. Visitors can explore its famous landmarks, such
+                          as the Dublin Castle, St. Patrick's Cathedral, and the
+                          Guinness Storehouse, where they can learn about the
+                          history and making of Ireland's famous beer.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="index.html">
+                <div class="home-offer-container1">
+                  <div class="offer-offer">
+                    <img
+                      alt="image"
+                      src="/img/limerick.jpg"
+                      class="offer-image"
+                    />
+                    <div class="offer-content">
+                      <div class="offer-details">
+                        <span class="offer-text"><span>Limerick</span></span>
+                        <span class="offer-text1">
+                          
+                        </span>
+                      </div>
+                      <span class="offer-text2">
+                        <span>
+                          Limerick is a charming city located in the mid-west of
+                          Ireland. It is a perfect destination for those looking
+                          for a relaxing and authentic Irish experience. The city
+                          is steeped in history, with landmarks like King John's
+                          Castle, City Gallery of Art and the Hunt Museum.
+                          Limerick is also known for its traditional Irish music
+                          scene, with plenty of pubs offering live
+                          performances.Limerick is a must-see destination for
+                          anyone visiting Ireland.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="index.html">
+                <div class="home-offer-container2">
+                  <div class="offer-offer">
+                    <img
+                      alt="image"
+                      src="/img/galway.jpg"
+                      class="offer-image"
+                    />
+                    <div class="offer-content">
+                      <div class="offer-details">
+                        <span class="offer-text"><span>Galway</span></span>
+                        <span class="offer-text1">
+                          
+                        </span>
+                      </div>
+                      <span class="offer-text2">
+                        <span>
+                          Galway, located on the west coast of Ireland, is a
+                          charming city with a vibrant cultural scene and stunning
+                          natural beauty. The city is known for its lively
+                          streets, colorful buildings, and friendly people. Galway
+                          is also home to some of Ireland's most beautiful
+                          beaches, including Salthill Beach and Silver Strand
+                          Beach. The city has a thriving music and arts scene,
+                          with numerous festivals throughout the year, including
+                          the famous Galway Arts Festival.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="index.html">
+                <div class="home-offer-container3">
+                  <div class="offer-offer offer-root-class-name">
+                    <img
+                      alt="image"
+                      src="/img/belfast.jpg"
+                      class="offer-image"
+                    />
+                    <div class="offer-content">
+                      <div class="offer-details">
+                        <span class="offer-text"><span>Belfast</span></span>
+                        <span class="offer-text1">
+                      </div>
+                      <span class="offer-text2">
+                        <span>
+                          Belfast, the capital city of Northern Ireland, is a
+                          vibrant destination that offers a mix of historical and
+                          modern attractions. The city is steeped in history, with
+                          a fascinating past that is reflected in its architecture
+                          and landmarks. Visitors can explore the Titanic Quarter,
+                          which is home to the Titanic Belfast museum, a tribute
+                          to the ill-fated ocean liner that was built in the city.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="index.html">
+                <div class="home-offer-container4">
+                  <div class="offer-offer">
+                    <img
+                      alt="image"
+                      src="/img/kilkenny.jpg"
+                      class="offer-image"
+                    />
+                    <div class="offer-content">
+                      <div class="offer-details">
+                        <span class="offer-text"><span>Kilkenny</span></span>
+                        <span class="offer-text1">
+                          
+                        </span>
+                      </div>
+                      <span class="offer-text2">
+                        <span>
+                          Kilkenny is a charming medieval city located in the
+                          southeast of Ireland, known for its rich history,
+                          cultural heritage, and stunning architecture. Kilkenny
+                          Castle, built in the 12th century, is the city's most
+                          iconic attraction and a must-visit for anyone traveling
+                          to Kilkenny. The castle is surrounded by beautiful
+                          gardens and parks, making it an ideal place to relax and
+                          soak up the city's atmosphere.Kilkenny is also famous
+                          for its vibrant nightlife and excellent food scene.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </section>
+          <section class="home-footer">
+            <div class="home-content1">
+              <div class="home-main1">
+                <div class="home-branding"><div class="home-heading1"></div></div>
+                <div class="home-links">
+                  <div class="home-items">
+                  </div>
+                  <div class="home-items1">
+                    <button class="home-link3 button button-clean" href="/templates/aboutus.html">
+                      About us
+                    </button>
+                    <button class="home-link4 button button-clean" href="/templates/complaint.html">Complaint</button>
+                    <button class="home-link5 button button-clean" href="http://youtube.com">
+                      Socials
+                    </button>
+                    <button class="home-link6 button button-clean" href="/templates/" href="/templates/faq.html">Faqs</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+    </body>
+  </html>
