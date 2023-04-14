@@ -65,10 +65,171 @@ h1 {
     background-color: #cc0000;
   }
 </style>
+<style>
+  body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+  .header {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+  .header h1 {
+      margin: 0;
+    }
+
+  .header a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 0 10px;
+    }
+
+  .packages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+    }
+
+  .package {
+      box-shadow: 0px 0px 10px #ccc;
+      margin: 10px;
+      width: 300px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+    }
+
+  .package:hover {
+      box-shadow: 0px 0px 20px #ccc;
+    }
+
+  .package img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+  .package h2 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+  .package p {
+      margin: 5px 0;
+    }
+
+  .package button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+  .package button:hover {
+      background-color: #555;
+      color: #333;
+    }
+
+
+  .header {
+		background-color: #333;
+		color: #fff;
+		display: flex;
+		justify-content: space-around;
+		padding: 20px;
+	  }
+
+
+  .header h1 {
+		margin: 0;
+	  }
+    
+  .header a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 20px;
+		padding: 0 10px;
+	  }
+
+
+
+  .container2 {
+		padding: 16px;
+		margin: 0 auto;
+		max-width: 600px;
+		border-radius: 5px;
+		background-color: #f2f2f2;
+	}
+
+  .container2 h1 {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+	
+  .container2 label {
+		font-size: 16px;
+		font-weight: bold;
+		display: block;
+		margin-bottom: 10px;
+	}
+
+
+  .container2 input[type=text],
+	.container2 input[type=email],
+	.container2 input[type=number],
+	.container2 select,
+	.container2 textarea {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
 
 
 
 
+
+  .container2 input[type=submit] {
+		background-color: #333;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-top: 20px;
+		width: 100%;
+	}
+
+
+
+  .container2 input[type=submit]:hover {
+		background-color: #555;
+	}
+
+
+  .container2 textarea {
+		height: 200px;
+		resize: none;
+  }
+</style>
 <!DOCTYPE html>
 <html>
   <head>
@@ -76,6 +237,14 @@ h1 {
     <title>Complaint Page</title>
   </head>
   <body>
+    <div class="header">
+      <a href="#">Travel Management </a>
+      <a href="{{url_for('package')}}">Packages</a>
+      <a href="{{url_for('booking')}}">Booking</a>
+      <a href="{{url_for('faq')}}">FAQ's</a>
+      <a href="{{url_for('complaint')}}">Complaint</a>
+      <a href="{{url_for('logout')}}">Logout</a>
+    </div>
     <h1>Complaint Form</h1>
     <form method="post" action="submit_complaint.php">
       <label for="name">Name:</label>
@@ -83,13 +252,7 @@ h1 {
       
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required><br><br>
-      
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" name="phone"><br><br>
-      
-      <label for="booking_id">Booking ID:</label>
-      <input type="text" id="booking_id" name="booking_id" required><br><br>
-      
+
       <label for="complaint_type">Complaint Type:</label>
       <select id="complaint_type" name="complaint_type" required>
         <option value="">Select Complaint Type</option>
