@@ -8,13 +8,15 @@ app = Flask('__name__')
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'flaskapp'
+app.config['MYSQL_DB'] = 'webauth'
 
 
 mysql = MySQL(app)
 
 
-app.secret_key = "advancedprogramming"
+app.secret_key = "dockerboojumsweetdish"
+
+
 
 
 
@@ -63,13 +65,38 @@ def login():
 
 
 ###################### routing to booking page
+# @app.route('/booking', methods=['GET'])
+# def booking():
+#     if 'username' in session:
+#         return render_template('booking.html')
+    
+    
 @app.route('/booking', methods=['GET','POST'])
-def booking():
+def booking():    
     if 'username' in session:
-        return render_template('booking.html')
+        if request.method == 'GET':
+            return render_template('booking.html')
+        
+        if request.method == 'POST':
+            bookingDetails = request.form
+            destination = bookingDetails['destination']
+            datefrom = bookingDetails['datefrom']
+            dateto = bookingDetails['dateto']
+            num_people = bookingDetails['num_people']
+            packageprice = bookingDetails['packageprice']
+            cursor = mysql.connection.cursor()
+            cursor.execute("INSERT INTO booking(destination,datefrom,dateto,num_people,packageprice) VALUES(%s,%s,%s,%s,%s)", (destination,datefrom,dateto,num_people,packageprice))
+            mysql.connection.commit()
+        return redirect(url_for('bookingconfirmation'))
+    
+    
+    
+@app.route('/confirm', methods=['GET','POST'])
+def confirm():
+    if 'username' in session:
+        return render_template('confirm.html')
     else:
-        return redirect(url_for('login')) 
-
+        return render_template("false.html")
 
 
 ###################### routing to package page
@@ -101,7 +128,27 @@ def logout():
     return redirect(url_for('login'))
 
 
-
+################## fetching booking data 
+@app.route('/bookingconfirmation', methods=['GET','POST'])
+def bookingconfirmation():
+    destination_value=[]
+    
+    if 'username' in session:
+        if request.method == 'POST':
+            bookingDetails = request.form
+            destination = bookingDetails['destination']
+            datefrom = bookingDetails['datefrom']
+            dateto = bookingDetails['dateto']
+            num_people = bookingDetails['num_people']
+            packageprice = bookingDetails['packageprice']
+            cursor = mysql.connection.cursor()
+            cursor.execute("SELECT destination FROM booking")
+            data = cursor.fetchall()
+            destination_value = [row[0] for row in data]
+            # session['loggedin']=True
+        return render_template("bookingconfirmation.html", destination_value=destination_value)
+    return render_template("still not working")
+    
 
 
 
