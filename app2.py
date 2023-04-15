@@ -82,7 +82,7 @@ def booking():
             datefrom = bookingDetails['datefrom']
             dateto = bookingDetails['dateto']
             num_people = bookingDetails['num_people']
-            packageprice = bookingDetails['packageprice']
+            packageprice = bookingDetails['price']
             cursor = mysql.connection.cursor()
             cursor.execute("INSERT INTO booking(destination,datefrom,dateto,num_people,packageprice) VALUES(%s,%s,%s,%s,%s)", (destination,datefrom,dateto,num_people,packageprice))
             mysql.connection.commit()
@@ -137,13 +137,13 @@ def bookingconfirmation():
             # form=soup.find('form',{'id':'booking'})
             # d=form.find('input',{'id':'destination'})
             # desti = d.get('value')
-            cursor = mysql.connection.cursor()
+            #cursor = mysql.connection.cursor()
             
             # cursor.execute("SELECT destination FROM booking WHERE destination=%s ",desti)
-            dest=cursor.fetchall()
+            #dest=cursor.fetchall()
             
             
-            return render_template("bookingconfirmation.html",dest)
+            return render_template("bookingconfirmation.html")
         else:
             return "still not working"
     
