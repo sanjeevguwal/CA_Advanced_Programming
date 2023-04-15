@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2023 at 02:10 PM
+-- Generation Time: Apr 15, 2023 at 02:31 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -78,36 +78,6 @@ INSERT INTO `complaint` (`com_id`, `complaint`, `name`, `email`, `complainttype`
 (6, 'sfhshk', 'test`', 'test1@test.com', 'booking'),
 (7, 'sfhshk', 'test`', 'test1@test.com', 'booking'),
 (8, 'paid issue', 'arth', 'test@test.com', 'payment');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `packages`
---
-
-CREATE TABLE IF NOT EXISTS `packages` (
-  `p_id` int(11) NOT NULL,
-  `p_name` varchar(50) NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `price` text NOT NULL,
-  PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
-
-CREATE TABLE IF NOT EXISTS `payment` (
-  `pay_id` int(11) NOT NULL AUTO_INCREMENT,
-  `b_id` int(11) NOT NULL,
-  `u_id` int(11) NOT NULL,
-  `status` text NOT NULL,
-  PRIMARY KEY (`pay_id`),
-  KEY `b_id` (`b_id`),
-  KEY `u_id` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
