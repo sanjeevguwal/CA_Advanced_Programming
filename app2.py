@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,url_for,redirect,session
 from flask_mysqldb import MySQL
-
+from bs4 import BeautifulSoup
+import requests
 
 
 app = Flask('__name__')
@@ -8,7 +9,7 @@ app = Flask('__name__')
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'flask_mysqldb1'
+app.config['MYSQL_DB'] = 'webauth'
 
 
 mysql = MySQL(app)
@@ -19,7 +20,16 @@ app.secret_key = "dockerboojumsweetdish"
 
 
 
+######################## index page
+@app.route('/', methods=['GET','POST'])
+def index():
+    return render_template('index.html')
 
+
+
+
+
+################# register page
 @app.route('/register', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
@@ -36,13 +46,10 @@ def register():
     return render_template('register.html')
     
     
-#################### routing login form
-# @app.route('/login')
-# def login():
-#     return render_template('login.html')
+
 
 ################## login form routing and checking the session
-@app.route('/', methods = ['GET','POST'])
+@app.route('/login', methods = ['GET','POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -62,15 +69,7 @@ def login():
     return render_template('login.html')
 
 
-
-
-###################### routing to booking page
-# @app.route('/booking', methods=['GET'])
-# def booking():
-#     if 'username' in session:
-#         return render_template('booking.html')
-    
-    
+############## routing booking page
 @app.route('/booking', methods=['GET','POST'])
 def booking():    
     if 'username' in session:
@@ -90,13 +89,6 @@ def booking():
         return redirect(url_for('bookingconfirmation'))
     
     
-    
-@app.route('/confirm', methods=['GET','POST'])
-def confirm():
-    if 'username' in session:
-        return render_template('confirm.html')
-    else:
-        return render_template("false.html")
 
 
 ###################### routing to package page
@@ -109,11 +101,11 @@ def package():
 
 
 
-##################### routing feedback form
+##################### routing faq form
 @app.route('/feedback', methods=['GET','POST'])
 def feedback():
     if 'username' in session:
-        return render_template('feedback.html')
+        return render_template('faqs.html')
     else:
         return redirect(url_for('login'))
 
@@ -131,27 +123,54 @@ def logout():
 ################## fetching booking data 
 @app.route('/bookingconfirmation', methods=['GET','POST'])
 def bookingconfirmation():
-    destination_value=[]
-    
     if 'username' in session:
-        if request.method == 'POST':
-            bookingDetails = request.form
-            destination = bookingDetails['destination']
-            datefrom = bookingDetails['datefrom']
-            dateto = bookingDetails['dateto']
-            num_people = bookingDetails['num_people']
-            packageprice = bookingDetails['packageprice']
+        if request.method == 'GET':
+            # destination=None
+            # bookingDetails = requestform
+            #destination = request.form(['destination'])
+            # datefrom = request.form['datefrom']
+            # dateto = request.form['dateto']
+            # num_people = request.form['num_people']
+            # packageprice = request.form['packageprice']
+            # response=requests.get('127.0.0.1:5000/booking')
+            # soup=BeautifulSoup(response.content,'html.parser')
+            # form=soup.find('form',{'id':'booking'})
+            # d=form.find('input',{'id':'destination'})
+            # desti = d.get('value')
             cursor = mysql.connection.cursor()
-            cursor.execute("SELECT destination FROM booking")
-            data = cursor.fetchall()
-            destination_value = [row[0] for row in data]
-            # session['loggedin']=True
-        return render_template("bookingconfirmation.html", destination_value=destination_value)
-    return render_template("still not working")
+            
+            # cursor.execute("SELECT destination FROM booking WHERE destination=%s ",desti)
+            dest=cursor.fetchall()
+            
+            
+            return render_template("bookingconfirmation.html",dest)
+        else:
+            return "still not working"
     
 
 
+################## routing the complaint file
+@app.route('/complaint', methods=['GET','POST'])
+def complaint():
+    if request.method == 'GET':
+        return render_template('complaint.html')
+        
+    if request.method == 'POST':
+            complaintDetails = request.form
+            name = complaintDetails['name']
+            email = complaintDetails['email']
+            complainttype = complaintDetails['complainttype']
+            complaint = complaintDetails['complaint']
+            cursor = mysql.connection.cursor()
+            cursor.execute("INSERT INTO complaint(name,email,complainttype,complaint) VALUES(%s,%s,%s,%s)", (name,email,complainttype,complaint))
+            mysql.connection.commit()
+            return redirect(url_for('complaintconfirm'))
 
+
+############## complaint confirm routing 
+@app.route('/complaintconfirm', methods=['GET','POST'])
+def complaintconfirm():
+    return render_template('complaintconfirmation.html')
 
 
 if __name__ == '__main__':

@@ -50,7 +50,7 @@ h1 {
     resize: vertical;
   }
   
-  input[type="submit"] {
+  button[type="submit"] {
     background-color: #ff6666;
     color: #fff;
     border: none;
@@ -61,7 +61,7 @@ h1 {
     transition: background-color 0.3s ease;
   }
   
-  input[type="submit"]:hover {
+  button[type="submit"]:hover {
     background-color: #cc0000;
   }
 </style>
@@ -241,20 +241,20 @@ h1 {
       <a href="#">Travel Management </a>
       <a href="{{url_for('package')}}">Packages</a>
       <a href="{{url_for('booking')}}">Booking</a>
-      <a href="{{url_for('faq')}}">FAQ's</a>
       <a href="{{url_for('complaint')}}">Complaint</a>
+      <a href="{{url_for('feedback')}}">FAQ's</a>
       <a href="{{url_for('logout')}}">Logout</a>
     </div>
     <h1>Complaint Form</h1>
-    <form method="post" action="submit_complaint.php">
+    <form method="post" action="">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required><br><br>
       
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required><br><br>
 
-      <label for="complaint_type">Complaint Type:</label>
-      <select id="complaint_type" name="complaint_type" required>
+      <label for="complainttype">Complaint Type:</label>
+      <select id="complainttype" name="complainttype" required>
         <option value="">Select Complaint Type</option>
         <option value="booking">Booking</option>
         <option value="payment">Payment</option>
@@ -265,7 +265,7 @@ h1 {
       <label for="complaint">Complaint:</label><br>
       <textarea id="complaint" name="complaint" rows="5" cols="50" required></textarea><br><br>
       
-      <input type="submit" value="Submit Complaint">
+      <button type="submit" value="Submit Complaint">Submit Complaint </button>
     </form>
   </body>
 </html>
