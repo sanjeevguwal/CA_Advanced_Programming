@@ -31,3 +31,7 @@ Real-time updates: A travel management website may provide you with real-time up
 Integration: To give a more full trip experience, some travel management websites integrate with other travel-related services such as travel insurance or visa services.
 
 Overall, adopting a travel management website can help you to streamline the travel booking process, save time and money, and deliver a more convenient and personalized travel experience.
+
+The website's operation is described below.
+
+Attach Screenshots here and explain them 
