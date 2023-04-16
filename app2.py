@@ -7,7 +7,7 @@ app = Flask('__name__')
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'webauth'
+app.config['MYSQL_DB'] = 'traveldb'
 
 
 mysql = MySQL(app)
@@ -186,7 +186,7 @@ connection = pymysql.connect(
     host='localhost',
     user='root',
     password='',
-    db='webauth',
+    db='traveldb',
     cursorclass=pymysql.cursors.DictCursor
 )
 
