@@ -9,3 +9,8 @@ The framework of a travel management project often contains numerous stages and 
 1.	Planning and organizing travel: This step entails defining the project's scope and objectives, establishing the organization's travel needs and preferences, and developing a travel management plan.
 2.	Booking and reservations: This stage entails making travel plans, such as booking packages as well as ensuring that the Customer is registered and all his required documents, such as visas and passports, are secured.
 3.	Travel policy compliance: This stage entails ensuring that all travel is in accordance with corporate policies and regulations, and that all relevant clearances are received prior to booking travel.
+Overall, the framework of a travel management project is intended to streamline travel operations, decrease costs, and provide our customers and other stakeholders with a safe and efficient travel experience.
+The project's flowchart begins with a registration page for users who have not yet registered, while those who have already registered can directly log in. Administrators will also have access to a login page.
+After logging into their account, the consumer can select a package that meets their needs. They will be sent to a booking page after picking a package.
+After completing the booking form, the admin will evaluate and verify the customer's information. Following confirmation, the admin will reserve a slot for the customer.
+The server-side backend handles data management and business logic in this project. Backend systems are often created in Python and JavaScript, with MySQL serving as a database management system to store and handle data.
