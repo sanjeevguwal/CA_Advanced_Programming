@@ -100,9 +100,9 @@ def package():
 
 
 ##################### routing faq form
-@app.route('/feedback', methods=['GET','POST'])
-def feedback():
-    return render_template('feedback.html')
+@app.route('/faq', methods=['GET','POST'])
+def faq():
+    return render_template('faq.html')
 
 
 
