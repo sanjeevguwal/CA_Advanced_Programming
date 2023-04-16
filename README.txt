@@ -15,3 +15,11 @@ After logging into their account, the consumer can select a package that meets t
 After completing the booking form, the admin will evaluate and verify the customer's information. Following confirmation, the admin will reserve a slot for the customer.
 The server-side backend handles data management and business logic in this project. Backend systems are often created in Python and JavaScript, with MySQL serving as a database management system to store and handle data.
 The client-side frontend, on the other hand, is in charge of the user interface and user experience. Frontend development technologies like as HTML, CSS, and JavaScript are widely used. HTML provides structure to the content of a webpage, CSS handles layout and design, and JavaScript adds interaction and dynamic capability.
+Why are travel management websites preferred?
+Time-saving: A travel management website can save you time by allowing you to book your travel arrangements online instead of visiting a travel agency or making phone calls.
+
+Cost-effective: A travel management website may help you find the greatest discounts on flights, hotels, rental cars, and other travel arrangements, which can save you money.
+
+Convenience: With a travel management website, you can access all of your travel information in one location, including flight data, hotel reservations, and itinerary details.
+
+Customization: Many travel management systems allow you to modify your trip arrangements to match your individual preferences, such as selecting specific airlines, hotels, or rental car companies.
