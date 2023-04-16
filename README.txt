@@ -14,3 +14,4 @@ The project's flowchart begins with a registration page for users who have not y
 After logging into their account, the consumer can select a package that meets their needs. They will be sent to a booking page after picking a package.
 After completing the booking form, the admin will evaluate and verify the customer's information. Following confirmation, the admin will reserve a slot for the customer.
 The server-side backend handles data management and business logic in this project. Backend systems are often created in Python and JavaScript, with MySQL serving as a database management system to store and handle data.
+The client-side frontend, on the other hand, is in charge of the user interface and user experience. Frontend development technologies like as HTML, CSS, and JavaScript are widely used. HTML provides structure to the content of a webpage, CSS handles layout and design, and JavaScript adds interaction and dynamic capability.
