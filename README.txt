@@ -43,7 +43,7 @@ Our back-end framework is based on render_template function in Flask which is us
 
 The Flask application also initializes the MySQL database when it is first launched. We are using the MySQL databse "traveldb.sql". The database has 3 tables - booking, complaint, users. The structure has been highlighted in comments within the traveldb.sql in further detail. The database is being run in phpMyAdmin through XAMPP control panel.
 
-Our front-end is based on HTML, CSS and JavaScript with all the webpages contained within the templates folder. The static folder has been
+Our front-end is based on HTML, CSS and JavaScript with all the webpages contained within the templates folder. The static folder contains all the CSS and JavaScript files. 
 
 Dependencies:
 Python
