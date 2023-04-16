@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2023 at 02:31 PM
+-- Generation Time: Apr 16, 2023 at 11:50 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `status` text NOT NULL,
   `dateto` date NOT NULL,
   PRIMARY KEY (`b_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `booking`
@@ -48,7 +48,9 @@ INSERT INTO `booking` (`destination`, `packageprice`, `datefrom`, `b_id`, `num_p
 ('cork', '150', '2023-03-29', 61, 3, '', '2023-04-27'),
 ('cork', '110', '2023-03-28', 62, 4, '', '2023-03-31'),
 ('dublin', '150', '2023-03-27', 63, 4, '', '2023-04-11'),
-('kilkenny', '120', '2023-04-07', 64, 3, '', '2023-04-26');
+('kilkenny', '120', '2023-04-07', 64, 3, '', '2023-04-26'),
+('cork', '110', '2023-04-17', 65, 4, '', '2024-01-01'),
+('galway', '120', '2023-04-30', 66, 7, '', '2024-01-31');
 
 -- --------------------------------------------------------
 
