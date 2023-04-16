@@ -88,11 +88,10 @@
     <body>
         <div class="header">
             <h1>Admin</h1>
-            <a href="#">Users</a>
-            <a href="#">Packages</a>
-            <a href="#">Bookings</a>
-            <a href="#">Complaints</a>
-            <a href="#">Logout</a>
+            <a href="{{url_for('adminusers')}}">Users</a>
+            <a href="{{url_for('adminbook')}}">Bookings</a>
+            <a href="{{url_for('admincomplaint')}}">Complaints</a>
+            <a href="{{url_for('logout')}}">Logout</a>
           </div>
     </body>
   </html>

@@ -1,7 +1,5 @@
 from flask import Flask, render_template,request,url_for,redirect,session
 from flask_mysqldb import MySQL
-from bs4 import BeautifulSoup
-import requests
 import pymysql
 
 app = Flask('__name__')
@@ -104,10 +102,9 @@ def package():
 ##################### routing faq form
 @app.route('/feedback', methods=['GET','POST'])
 def feedback():
-    if 'username' in session:
-        return render_template('faqs.html')
-    else:
-        return redirect(url_for('login'))
+    return render_template('feedback.html')
+
+
 
 
 
@@ -117,27 +114,7 @@ def feedback():
 def bookingconfirmation():
     if 'username' in session:
         if request.method == 'GET':
-            # destination=None
-            # bookingDetails = requestform
-            #destination = request.form(['destination'])
-            # datefrom = request.form['datefrom']
-            # dateto = request.form['dateto']
-            # num_people = request.form['num_people']
-            # packageprice = request.form['packageprice']
-            # response=requests.get('127.0.0.1:5000/booking')
-            # soup=BeautifulSoup(response.content,'html.parser')
-            # form=soup.find('form',{'id':'booking'})
-            # d=form.find('input',{'id':'destination'})
-            # desti = d.get('value')
-            # cursor = mysql.connection.cursor()
-            
-            # # cursor.execute("SELECT destination FROM booking WHERE destination=%s ",desti)
-            # dest=cursor.fetchall()
-            
-            
             return render_template("bookingconfirmation.html")
-        else:
-            return "still not working"
     
 
 
@@ -190,7 +167,17 @@ def aboutus():
 
 @app.route('/admin', methods=['GET','POST'])
 def admin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username == 'admin' and password == 'password':
+            cursor = mysql.connection.cursor()
+            cursor.execute("SELECT * FROM users WHERE username=%s AND password=%s", (username, password))
+            admin = cursor.fetchone()
+            session['loggedin']=True
+            session['username']=admin[1]
     return render_template('admin.html')
+
 
 
 ################### admin page
@@ -203,24 +190,24 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
-@app.route('/admin/users')
-def admin_users():
-    with connection.cursor() as cursor:
+@app.route('/adminusers', methods=['GET','POST'])
+def adminusers():
+    # if 'username' in session:
+        with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM users")
             users = cursor.fetchall()
-    return render_template('users.html', users=users)
+        return render_template('users.html', users=users)
     
     
     
 #################################    
-@app.route('/admin/booking')
-def admin_book():
+@app.route('/adminbook')
+def adminbook():
     try:
         # Fetch user data from the database
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM booking")
             booking = cursor.fetchall()
-        
         # Render the template and pass in the user data
         return render_template('bookingregister.html', booking=booking)
     
@@ -232,8 +219,8 @@ def admin_book():
 
 
 #############################################
-@app.route('/admin/complaint')
-def admin_complaint():
+@app.route('/admincomplaint')
+def admincomplaint():
     try:
         # Fetch user data from the database
         with connection.cursor() as cursor:
