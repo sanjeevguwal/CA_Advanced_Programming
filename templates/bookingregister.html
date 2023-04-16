@@ -89,10 +89,39 @@
         <div class="header">
             <h1>Admin</h1>
             <a href="#">Users</a>
-            <a href="#">Packages</a>
             <a href="#">Bookings</a>
             <a href="#">Complaints</a>
             <a href="#">Logout</a>
           </div>
+
+
+          <h1>Users Booking Details</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Booking ID</th>
+        <th>Destination</th>
+        <th>Date From</th>
+        <th>Date To</th>
+        <th>Package Price</th>
+        <th>Number Of People</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in booking %}
+      <tr>
+        <td>{{ book.b_id }}</td>
+        <td>{{ book.destination }}</td>
+        <td>{{ book.datefrom }}</td>
+        <td>{{ book.dateto }}</td>
+        <td>{{ book.packageprice }}</td>
+        <td>{{ book.num_people }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+
+
+
     </body>
   </html>

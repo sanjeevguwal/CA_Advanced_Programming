@@ -2,14 +2,14 @@ from flask import Flask, render_template,request,url_for,redirect,session
 from flask_mysqldb import MySQL
 from bs4 import BeautifulSoup
 import requests
-
+import pymysql
 
 app = Flask('__name__')
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'traveldb'
+app.config['MYSQL_DB'] = 'webauth'
 
 
 mysql = MySQL(app)
@@ -63,7 +63,7 @@ def login():
             return redirect(url_for('package'))
         
         elif username == 'admin' and password == 'password':
-                return render_template('admin.html')    
+            return redirect(url_for('admin'))    
         else:
             return render_template('False.html')
     return render_template('login.html')
@@ -82,7 +82,7 @@ def booking():
             datefrom = bookingDetails['datefrom']
             dateto = bookingDetails['dateto']
             num_people = bookingDetails['num_people']
-            packageprice = bookingDetails['price']
+            packageprice = bookingDetails['packageprice']
             cursor = mysql.connection.cursor()
             cursor.execute("INSERT INTO booking(destination,datefrom,dateto,num_people,packageprice) VALUES(%s,%s,%s,%s,%s)", (destination,datefrom,dateto,num_people,packageprice))
             mysql.connection.commit()
@@ -111,14 +111,6 @@ def feedback():
 
 
 
-############## logout page routing the function
-
-@app.route('/logout')
-def logout():
-    session.pop('loggedin',None)
-    session.pop('username',None)
-    return redirect(url_for('login'))
-
 
 ################## fetching booking data 
 @app.route('/bookingconfirmation', methods=['GET','POST'])
@@ -137,10 +129,10 @@ def bookingconfirmation():
             # form=soup.find('form',{'id':'booking'})
             # d=form.find('input',{'id':'destination'})
             # desti = d.get('value')
-            #cursor = mysql.connection.cursor()
+            # cursor = mysql.connection.cursor()
             
-            # cursor.execute("SELECT destination FROM booking WHERE destination=%s ",desti)
-            #dest=cursor.fetchall()
+            # # cursor.execute("SELECT destination FROM booking WHERE destination=%s ",desti)
+            # dest=cursor.fetchall()
             
             
             return render_template("bookingconfirmation.html")
@@ -173,5 +165,89 @@ def complaintconfirm():
     return render_template('complaintconfirmation.html')
 
 
+
+
+
+
+############## logout page routing the function
+
+@app.route('/logout')
+def logout():
+    session.pop('loggedin',None)
+    session.pop('username',None)
+    return redirect(url_for('index'))
+
+
+
+
+################# aboutus routing
+@app.route('/aboutus', methods=['GET','POST'])
+def aboutus():
+    return render_template('aboutus.html') 
+
+
+############################ admin processsing ###################################################################################
+
+@app.route('/admin', methods=['GET','POST'])
+def admin():
+    return render_template('admin.html')
+
+
+################### admin page
+# Connect to the database
+connection = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='',
+    db='webauth',
+    cursorclass=pymysql.cursors.DictCursor
+)
+
+@app.route('/admin/users')
+def admin_users():
+    with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM users")
+            users = cursor.fetchall()
+    return render_template('users.html', users=users)
+    
+    
+    
+#################################    
+@app.route('/admin/booking')
+def admin_book():
+    try:
+        # Fetch user data from the database
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM booking")
+            booking = cursor.fetchall()
+        
+        # Render the template and pass in the user data
+        return render_template('bookingregister.html', booking=booking)
+    
+    except Exception as e:
+        # Handle any errors that occur
+        print(e)
+        return "An error occurred: {}".format(e)
+
+
+
+#############################################
+@app.route('/admin/complaint')
+def admin_complaint():
+    try:
+        # Fetch user data from the database
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM complaint")
+            complaint = cursor.fetchall()
+        
+        # Render the template and pass in the user data
+        return render_template('complaintregister.html', complaint=complaint)
+    
+    except Exception as e:
+        # Handle any errors that occur
+        print(e)
+        return "An error occurred: {}".format(e)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=3000)

@@ -89,10 +89,37 @@
         <div class="header">
             <h1>Admin</h1>
             <a href="#">Users</a>
-            <a href="#">Packages</a>
             <a href="#">Bookings</a>
             <a href="#">Complaints</a>
             <a href="#">Logout</a>
           </div>
+
+
+          <h1>Users Complaint Details</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Complaint ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Complaint Type</th>
+        <th>Complaint</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comp in complaint %}
+      <tr>
+        <td>{{ comp.com_id }}</td>
+        <td>{{ comp.name }}</td>
+        <td>{{ comp.email }}</td>
+        <td>{{ comp.complainttype }}</td>
+        <td>{{ comp.complaint }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+
+
+
     </body>
   </html>
