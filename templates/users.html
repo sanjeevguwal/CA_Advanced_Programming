@@ -84,6 +84,47 @@
       color: #333;
     }
   </style>
+  <style>
+    /* Define the styles for the table */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 200px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #dddddd;
+    }
+    /* Define the styles for the border layout */
+    .border-layout {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .border-layout > * {
+      flex: 1 1 0;
+      padding: 10px;
+    }
+    .border-layout > .center {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+    /* Define the styles for centering the border layout */
+    .centered {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <style>
+  body {
+    background-image: url("/static/img/dbimage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
   <html>
     <body>
         <div class="header">
@@ -93,31 +134,37 @@
             <a href="{{url_for('admincomplaint')}}">Complaints</a>
             <a href="{{url_for('logout')}}">Logout</a>
           </div>
-
-
-          <h1>Admin Users</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>User ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Password</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for user in users %}
-      <tr>
-        <td>{{ user.u_id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.password }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-
-
-
-
+          <div class="centered">
+            <div class="border-layout">
+              <div class="top"></div>
+              <div class="left"></div>
+              <div class="center">
+                <h1>Users</h1>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>NAME</th>
+                      <th>PASSWORD</th>
+                      <th>EMAIL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for user in users %}
+                    <tr>
+                      <td>{{ user.u_id }}</td>
+                      <td>{{ user.username }}</td>
+                      <td>{{ user.password }}</td>
+                      <td>{{ user.email }}</td>
+                    </tr>
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+              <div class="right"></div>
+              <div class="bottom"></div>
+            </div>
+          </div>
     </body>
   </html>
