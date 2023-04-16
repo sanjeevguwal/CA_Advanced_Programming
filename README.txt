@@ -1,14 +1,18 @@
 Project Name: Travel Management System
+
 Our project is focused on creating a system for handling travel-related activities, such as booking packages for various counties in Ireland. The system's primary goal is to streamline and automate the travel management process, making it easier for people to manage their travel programs efficiently. Furthermore, the technology will assist firms in ensuring that their travel policies are followed, as well as offering analytics and statistics to help optimize their travel programs. Finally, the system will be integrated on a web server, allowing travellers to manage their travel arrangements and spending while on the go, boosting their overall travel experience.
 The folks who are collaborating on this project are
+
 •	Arth Doshi - 10632646
 •	Sanjeev Guwal - 10639433
 •	Rohit Kadekar - 10609725
 •	Vishakha Bhorkade – 10635052
+
 The framework of a travel management project often contains numerous stages and components that try to ensure seamless and effective travel operations. This project includes the following components:
 1.	Planning and organizing travel: This step entails defining the project's scope and objectives, establishing the organization's travel needs and preferences, and developing a travel management plan.
 2.	Booking and reservations: This stage entails making travel plans, such as booking packages as well as ensuring that the Customer is registered and all his required documents, such as visas and passports, are secured.
 3.	Travel policy compliance: This stage entails ensuring that all travel is in accordance with corporate policies and regulations, and that all relevant clearances are received prior to booking travel.
+
 Overall, the framework of a travel management project is intended to streamline travel operations, decrease costs, and provide our customers and other stakeholders with a safe and efficient travel experience.
 The project's flowchart begins with a registration page for users who have not yet registered, while those who have already registered can directly log in. Administrators will also have access to a login page.
 After logging into their account, the consumer can select a package that meets their needs. They will be sent to a booking page after picking a package.
@@ -32,6 +36,19 @@ Integration: To give a more full trip experience, some travel management website
 
 Overall, adopting a travel management website can help you to streamline the travel booking process, save time and money, and deliver a more convenient and personalized travel experience.
 
-The website's operation is described below.
+The webapplication's operation is described below.
 
-Attach Screenshots here and explain them 
+
+Our back-end framework is based on render_template function in Flask which is used to render HTML templates and return them to the user requesting via HTTP responses(GET,POST methods) to the clients making requests to your application. The render_template function takes the name of the HTML template file as its first argument, followed by any number of keyword arguments. Filename=app2.py
+
+The Flask application also initializes the MySQL database when it is first launched. We are using the MySQL databse "traveldb.sql". The database has 3 tables - booking, complaint, users. The structure has been highlighted in comments within the traveldb.sql in further detail. The database is being run in phpMyAdmin through XAMPP control panel.
+
+Our front-end is based on HTML, CSS and JavaScript with all the webpages contained within the templates folder. The static folder has been
+
+Dependencies:
+Python
+JavaScript
+HTML
+CSS
+MySQL
+phpMyAdmin
